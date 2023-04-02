@@ -1,4 +1,5 @@
 <a href="https://codeclimate.com/github/cheernomore/java-project-61/maintainability"><img src="https://api.codeclimate.com/v1/badges/b693b72275c1df49e492/maintainability" /></a>
+https://github.com/cheernomore/java-project-61/actions/workflows/hexlet-check.yml/badge.svg
 
 How to play games: \
 2 - Even  https://asciinema.org/a/2KJPGBMq5rSGldHNIZ5wcZEln \
