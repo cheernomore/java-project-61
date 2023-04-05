@@ -1,87 +1,48 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.Scanner;
+public class Calc {
 
-public class Calc extends Game {
-    private int arithmeticOperationRangeStart = 0;
-    private int getArithmeticOperationRangeEnd = 2;
+    public static Object[][] generateGameRulesAndQASet(int questionAnswersCount) {
+        Object[][] questionAnswerIteration = new Object[questionAnswersCount][2];
+        int number1;
+        int number2;
+        String operator;
 
-    private String[] arithmeticOperations = new String[]{"+", "-", "*"};
+        for (int i = 0; i < questionAnswersCount; i++) {
+            number1 = RandomUtils.nextInt(0, 100);
+            number2 = RandomUtils.nextInt(0, 100);
+            operator = generateRandomMathOperator();
 
-    public Calc(String gameLaunchKey, String gameTitle) {
-        super(gameLaunchKey, gameTitle);
-    }
-
-    public void start() {
-        boolean answer;
-        String username;
-
-        username = Cli.greetings();
-        System.out.println("What is the result of the expression?");
-
-        while (COUNTER < WIN_CONDITION) {
-
-            answer = askQuestion();
-
-            if (answer) {
-                COUNTER++;
-
-                if (COUNTER == WIN_CONDITION) {
-                    System.out.println("Congratulations, " + username + "!");
-                }
-            } else {
-                break;
-            }
+            String question = generateQuestion(number1, number2, operator);
+            String answer = generateAnswer(number1, number2, operator);
+            questionAnswerIteration[i][0] = question;
+            questionAnswerIteration[i][1] = answer;
         }
+
+        return questionAnswerIteration;
     }
 
-    public String getRandomArithmeticOperation() {
-        return arithmeticOperations[RandomUtils.nextInt(arithmeticOperationRangeStart, getArithmeticOperationRangeEnd)];
+    public static String generateQuestion(int number1, int number2, String operator) {
+        return number1 + operator + number2;
     }
 
-    public int generateArithmeticExpression(String arithmeticOperand, int num1, int num2) {
-        switch (arithmeticOperand) {
-            case "+" -> {
-                return num1 + num2;
-            }
-            case "-" -> {
-                return num1 - num2;
-            }
-            case "*" -> {
-                return num1 * num2;
-            }
-            default -> {
-                return 0;
-            }
-        }
+    public static String generateRandomMathOperator() {
+        return new String[]{"+", "-", "*"}[RandomUtils.nextInt(0, 3)];
     }
 
-    public void printArithmeticExpression(String arithmeticOperand, int num1, int num2) {
-        System.out.println("Question: " + num1 + " " + arithmeticOperand + " " + num2);
-    }
+    public static String generateAnswer(int number1, int number2, String operator) {
 
-    public boolean askQuestion() {
-        int firstNumber = RandomUtils.nextInt(0, 100);
-        int secondNumber = RandomUtils.nextInt(0, 100);
-        String randomArithmeticExpression = getRandomArithmeticOperation();
-        Scanner scanner = new Scanner(System.in);
-        int userAnswer;
-
-        printArithmeticExpression(randomArithmeticExpression, firstNumber, secondNumber);
-        System.out.print("Your answer: ");
-        userAnswer = scanner.nextInt();
-
-        int answer = generateArithmeticExpression(randomArithmeticExpression, firstNumber, secondNumber);
-
-        if (answer == userAnswer) {
-            System.out.println("Correct!");
-            return true;
-        } else {
-            System.out.println(userAnswer + " is wrong answer. ;(. Correct answer '" + answer + "'.");
-            return false;
+        switch (operator) {
+            case "+":
+                return Integer.toString(number1 + number2);
+            case "-":
+                return Integer.toString(number1 - number2);
+            case "*":
+                return Integer.toString(number1 * number2);
+            default:
+                return "";
         }
     }
 }

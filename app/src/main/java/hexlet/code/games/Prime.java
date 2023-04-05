@@ -1,33 +1,31 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.Scanner;
+public class Prime {
 
-public class Prime extends Game {
-    public Prime(String gameLaunchKey, String gameTitle) {
-        super(gameLaunchKey, gameTitle);
-    }
+    public static Object[][] generateGameRulesAndQASet(int questionAnswersCount) {
+        Object[][] questionAnswerIteration = new Object[questionAnswersCount][2];
 
-    public void start() {
-        String username = Cli.greetings();
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-
-        while (COUNTER < WIN_CONDITION) {
-            boolean answer = getAnswer();
-
-            if (!answer) {
-                break;
-            }
-
-            if (COUNTER == WIN_CONDITION) {
-                System.out.println("Congratulations, " + username + "!");
-            }
+        for (int i = 0; i < questionAnswersCount; i++) {
+            int question = generateQuestion();
+            String answer = generateAnswer(question);
+            questionAnswerIteration[i][0] = question;
+            questionAnswerIteration[i][1] = answer;
         }
+
+        return questionAnswerIteration;
     }
 
-    public String isPrime(int number) {
+    public static int generateQuestion() {
+        return RandomUtils.nextInt(0, 100);
+    }
+
+    public static String generateAnswer(int question) {
+        return isPrime(question);
+    }
+
+    public static String isPrime(int number) {
         if (number <= 1) {
             return "no";
         }
@@ -40,24 +38,45 @@ public class Prime extends Game {
 
         return "yes";
     }
+//
+//    public static String isEven(int number) {
+//        return number % 2 == 0 ? "yes" : "no";
+//    }
+//
+//    public void start() {
+//        String username = Cli.greetings();
+//        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+//
+//        while (COUNTER < WIN_CONDITION) {
+//            boolean answer = getAnswer();
+//
+//            if (!answer) {
+//                break;
+//            }
+//
+//            if (COUNTER == WIN_CONDITION) {
+//                System.out.println("Congratulations, " + username + "!");
+//            }
+//        }
+//    }
 
-    public boolean getAnswer() {
-        Scanner scanner = new Scanner(System.in);
-        int randomNumber = RandomUtils.nextInt(0, 100);
-        String userAnswer;
-        String correctAnswer = isPrime(randomNumber);
-
-        System.out.println("Question: " + randomNumber);
-        System.out.print("Answer: ");
-        userAnswer = scanner.nextLine();
-
-        if (correctAnswer.equals(userAnswer)) {
-            System.out.println("Correct!");
-            COUNTER++;
-            return true;
-        } else {
-            System.out.println(userAnswer + " is wrong answer. ;(. Correct answer '" + correctAnswer + "'.");
-            return false;
-        }
-    }
+//    public boolean getAnswer() {
+//        Scanner scanner = new Scanner(System.in);
+//        int randomNumber = RandomUtils.nextInt(0, 100);
+//        String userAnswer;
+//        String correctAnswer = isPrime(randomNumber);
+//
+//        System.out.println("Question: " + randomNumber);
+//        System.out.print("Answer: ");
+//        userAnswer = scanner.nextLine();
+//
+//        if (correctAnswer.equals(userAnswer)) {
+//            System.out.println("Correct!");
+//            COUNTER++;
+//            return true;
+//        } else {
+//            System.out.println(userAnswer + " is wrong answer. ;(. Correct answer '" + correctAnswer + "'.");
+//            return false;
+//        }
+//    }
 }

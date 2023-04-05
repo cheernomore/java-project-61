@@ -1,54 +1,31 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.Scanner;
+public class Even {
 
-public class Even extends Game {
+    public static Object[][] generateGameRulesAndQASet(int questionAnswersCount){
+        Object[][] questionAnswerIteration = new Object[questionAnswersCount][2];
 
-    public Even(String gameLaunchKey, String gameTitle) {
-        super(gameLaunchKey, gameTitle);
-    }
-    public void start() {
-        boolean answer;
-        String username;
-
-        username = Cli.greetings();
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        while (COUNTER < WIN_CONDITION) {
-
-            answer = askQuestion();
-
-            if (answer) {
-                COUNTER++;
-
-                if (COUNTER == WIN_CONDITION) {
-                    System.out.println("Congratulations, " + username + "!");
-                }
-            } else {
-                break;
-            }
+        for (int i = 0; i < questionAnswersCount; i++) {
+            int question = generateQuestion();
+            String answer = generateAnswer(question);
+            questionAnswerIteration[i][0] = question;
+            questionAnswerIteration[i][1] = answer;
         }
+
+        return questionAnswerIteration;
     }
+
+    public static int generateQuestion() {
+        return RandomUtils.nextInt(0, 100);
+    }
+
+    public static String generateAnswer(int question) {
+        return isEven(question);
+    }
+
     public static String isEven(int number) {
         return number % 2 == 0 ? "yes" : "no";
-    }
-
-    public static boolean askQuestion() {
-        Scanner scanner = new Scanner(System.in);
-        int randomNumber = RandomUtils.nextInt(0, 100);
-        String userAnswer;
-        System.out.println("Question: " + randomNumber);
-        System.out.print("Your answer: ");
-        userAnswer = scanner.nextLine();
-
-        if (userAnswer.equals(isEven(randomNumber))) {
-            System.out.println("Correct!");
-            return true;
-        } else {
-            System.out.println(userAnswer + " is wrong answer. ;(. Correct answer '" + isEven(randomNumber) + "'.");
-            return false;
-        }
     }
 }

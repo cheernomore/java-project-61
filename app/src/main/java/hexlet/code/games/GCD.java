@@ -1,34 +1,38 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.Scanner;
+public class GCD {
 
-public class GCD extends Game {
+    public static Object[][] generateGameRulesAndQASet(int questionAnswersCount){
+        Object[][] questionAnswerIteration = new Object[questionAnswersCount][2];
 
-    public GCD(String gameLaunchKey, String gameTitle) {
-        super(gameLaunchKey, gameTitle);
-    }
+        for (int i = 0; i < questionAnswersCount; i++) {
+            int num1 = generateRandomOperand();
+            int num2 = generateRandomOperand();
 
-    public void start() {
-        String username = Cli.greetings();
-        System.out.println("Find the greatest common divisor of given numbers.");
-
-        while (COUNTER < WIN_CONDITION) {
-            boolean answer = getAnswer();
-
-            if (!answer) {
-                break;
-            }
-
-            if (COUNTER == WIN_CONDITION) {
-                System.out.println("Congratulations, " + username + "!");
-            }
+            String question = generateQuestion(num1, num2);
+            String answer = generateAnswer(num1, num2);
+            questionAnswerIteration[i][0] = question;
+            questionAnswerIteration[i][1] = answer;
         }
+
+        return questionAnswerIteration;
     }
 
-    public int getGCD(int num1, int num2) {
+    public static String generateQuestion(int num1, int num2) {
+        return num1 + " " + num2;
+    }
+
+    public static String generateAnswer(int num1, int num2) {
+        return Integer.toString(getGCD(num1, num2));
+    }
+
+    public static int generateRandomOperand() {
+        return RandomUtils.nextInt(0, 100);
+    }
+
+    public static int getGCD(int num1, int num2) {
         if (num1 == num2) {
             return num1;
         }
@@ -42,27 +46,5 @@ public class GCD extends Game {
         }
 
         return num1;
-    }
-
-    public boolean getAnswer() {
-        Scanner scanner = new Scanner(System.in);
-        int num1 = RandomUtils.nextInt(0, 100);
-        int num2 = RandomUtils.nextInt(0, 100);
-
-        int userAnswer;
-        int correctAnswer;
-
-        System.out.println("Your answer: " + num1 + " " + num2);
-        userAnswer = scanner.nextInt();
-
-        correctAnswer = getGCD(num1, num2);
-        if (correctAnswer == userAnswer) {
-            System.out.println("Correct!");
-            COUNTER++;
-            return true;
-        } else {
-            System.out.println(userAnswer + " is wrong answer. ;(. Correct answer '" + correctAnswer + "'.");
-            return false;
-        }
     }
 }
