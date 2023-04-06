@@ -8,6 +8,7 @@ public class Engine {
         Scanner scanner = new Scanner(System.in);
         String username;
 
+        System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         username = scanner.nextLine();
 
@@ -20,6 +21,7 @@ public class Engine {
         String username;
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         username = scanner.nextLine();
         System.out.println(rules);
