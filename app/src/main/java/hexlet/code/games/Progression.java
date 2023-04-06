@@ -22,16 +22,19 @@ public class Progression {
 
     public static String generateQuestion(int[] progression, int randomIndex) {
         String[] stringNumbers = new String[progression.length];
+        String example = "";
 
         for (int i = 0; i < progression.length; i++) {
             if (i == randomIndex) {
                 stringNumbers[i] = "..";
+                example += stringNumbers[i] + " ";
             } else {
                 stringNumbers[i] = Integer.toString(progression[i]);
+                example += stringNumbers[i] + " ";
             }
         }
 
-        return Arrays.toString(stringNumbers);
+        return example.trim();
     }
 
     public static int generateAnswer(int[] progression, int randomIndex) {
@@ -54,4 +57,6 @@ public class Progression {
     public static int getProgressionRandomIndex(int[] progression) {
         return RandomUtils.nextInt(0, progression.length - 1);
     }
+
+
 }
