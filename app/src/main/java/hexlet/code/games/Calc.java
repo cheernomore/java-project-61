@@ -25,7 +25,7 @@ public class Calc {
     }
 
     public static String generateQuestion(int number1, int number2, String operator) {
-        return number1 + operator + number2;
+        return number1 + " " + operator + " " + number2;
     }
 
     public static String generateRandomMathOperator() {
