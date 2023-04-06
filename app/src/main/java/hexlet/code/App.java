@@ -22,6 +22,8 @@ public class App {
         userGameSelected = scanner.nextInt();
 
         switch (userGameSelected) {
+            case 1:
+                Engine.launchGame();
             case 2:
                 Engine.launchGame(
                         "Answer 'yes' if the number is even, otherwise answer 'no'.",
@@ -48,7 +50,7 @@ public class App {
                         Prime.generateGameRulesAndQASet(3));
                 break;
             default:
-                System.out.println("GG");
+                break;
         }
     }
 }

@@ -4,6 +4,15 @@ import java.util.Scanner;
 
 public class Engine {
 
+    public static void launchGame() {
+        Scanner scanner = new Scanner(System.in);
+        String username;
+
+        System.out.print("May I have your name? ");
+        username = scanner.nextLine();
+
+        System.out.println("Hello, " + username + "!");
+    }
     public static void launchGame(String rules, Object[][] askAnswers) {
         final int winCondition = 3;
         int counter = 0;
