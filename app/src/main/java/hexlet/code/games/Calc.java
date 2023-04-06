@@ -5,9 +5,12 @@ import org.apache.commons.lang3.RandomUtils;
 public class Calc {
 
     public static Object[][] generateGameRulesAndQASet() {
-        Object[][] questionAnswerIteration = new Object[3][2];
-        int startRangeGenerateRandomNumber = 0;
-        int endRangeGenerateRandomNumber = 100;
+        final int startRangeGenerateRandomNumber = 0;
+        final int endRangeGenerateRandomNumber = 100;
+        final int questionsCount = 3;
+
+        Object[][] questionAnswerIteration = new Object[questionsCount][2];
+
         int number1;
         int number2;
         String operator;
@@ -31,8 +34,9 @@ public class Calc {
     }
 
     public static String generateRandomMathOperator() {
-        int startRangeGenMathOperator = 0;
-        int endRangeGenMathOperator = 3;
+        final int startRangeGenMathOperator = 0;
+        final int endRangeGenMathOperator = 3;
+
         String[] mathOperators = new String[]{"+", "-", "*"};
         int randomOperator = RandomUtils.nextInt(startRangeGenMathOperator, endRangeGenMathOperator);
 

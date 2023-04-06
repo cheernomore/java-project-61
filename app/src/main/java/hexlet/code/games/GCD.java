@@ -5,7 +5,8 @@ import org.apache.commons.lang3.RandomUtils;
 public class GCD {
 
     public static Object[][] generateGameRulesAndQASet() {
-        Object[][] questionAnswerIteration = new Object[3][2];
+        final int questionsCount = 3;
+        Object[][] questionAnswerIteration = new Object[questionsCount][2];
 
         for (int i = 0; i < questionAnswerIteration.length; i++) {
             int number1 = generateRandomOperand();
@@ -29,8 +30,8 @@ public class GCD {
     }
 
     public static int generateRandomOperand() {
-        int startRangeGenerateRandomNumber = 0;
-        int endRangeGenerateRandomNumber = 100;
+        final int startRangeGenerateRandomNumber = 0;
+        final int endRangeGenerateRandomNumber = 100;
 
         return RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
     }

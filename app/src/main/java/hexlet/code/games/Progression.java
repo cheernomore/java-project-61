@@ -5,7 +5,9 @@ import org.apache.commons.lang3.RandomUtils;
 public class Progression {
 
     public static Object[][] generateGameRulesAndQASet() {
-        Object[][] questionAnswerIteration = new Object[3][2];
+        final int questionsCount = 3;
+
+        Object[][] questionAnswerIteration = new Object[questionsCount][2];
 
         for (int i = 0; i < questionAnswerIteration.length; i++) {
             int[] progression = generateProgression();
@@ -41,10 +43,11 @@ public class Progression {
     }
 
     public static int[] generateProgression() {
-        int progressionSizeLenMin = 5;
-        int progressionSizeLenMax = 10;
-        int startRangeGenerateRandomNumber = 0;
-        int endRangeGenerateRandomNumber = 100;
+        final int progressionSizeLenMin = 5;
+        final int progressionSizeLenMax = 10;
+        final int startRangeGenerateRandomNumber = 0;
+        final int endRangeGenerateRandomNumber = 100;
+
         int[] progression = new int[RandomUtils.nextInt(progressionSizeLenMin, progressionSizeLenMax)];
         int start = RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
         int step = RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
