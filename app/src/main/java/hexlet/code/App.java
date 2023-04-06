@@ -24,6 +24,7 @@ public class App {
         switch (userGameSelected) {
             case 1:
                 Engine.launchGame();
+                break;
             case 2:
                 Engine.launchGame(
                         "Answer 'yes' if the number is even, otherwise answer 'no'.",
