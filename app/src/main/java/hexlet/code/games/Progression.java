@@ -25,7 +25,7 @@ public class Progression {
 
         for (int i = 0; i < progression.length; i++) {
             if (i == randomIndex) {
-                stringNumbers[i] = ".. ";
+                stringNumbers[i] = "..";
             } else {
                 stringNumbers[i] = Integer.toString(progression[i]);
             }
