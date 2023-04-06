@@ -38,6 +38,7 @@ public class Engine {
             } else {
                 System.out.println(
                     "'" + userAnswer + "' is wrong answer. Correct answer is was '" + askAnswers[i][1] + "'.");
+                System.out.println("Let's try again, " + username + "!");
                 break;
             }
 
