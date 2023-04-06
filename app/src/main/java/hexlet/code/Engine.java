@@ -24,6 +24,7 @@ public class Engine {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         username = scanner.nextLine();
+        System.out.println("Hello, " + username);
         System.out.println(rules);
 
         for (int i = 0; i < winCondition; i++) {
