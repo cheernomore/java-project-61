@@ -4,15 +4,17 @@ import org.apache.commons.lang3.RandomUtils;
 
 public class Calc {
 
-    public static Object[][] generateGameRulesAndQASet(int questionAnswersCount) {
-        Object[][] questionAnswerIteration = new Object[questionAnswersCount][2];
+    public static Object[][] generateGameRulesAndQASet() {
+        Object[][] questionAnswerIteration = new Object[3][2];
+        int startRangeGenerateRandomNumber = 0;
+        int endRangeGenerateRandomNumber = 100;
         int number1;
         int number2;
         String operator;
 
-        for (int i = 0; i < questionAnswersCount; i++) {
-            number1 = RandomUtils.nextInt(0, 100);
-            number2 = RandomUtils.nextInt(0, 100);
+        for (int i = 0; i < questionAnswerIteration.length; i++) {
+            number1 = RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
+            number2 = RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
             operator = generateRandomMathOperator();
 
             String question = generateQuestion(number1, number2, operator);
@@ -29,7 +31,12 @@ public class Calc {
     }
 
     public static String generateRandomMathOperator() {
-        return new String[]{"+", "-", "*"}[RandomUtils.nextInt(0, 3)];
+        int startRangeGenMathOperator = 0;
+        int endRangeGenMathOperator = 3;
+        String[] mathOperators = new String[]{"+", "-", "*"};
+        int randomOperator = RandomUtils.nextInt(startRangeGenMathOperator, endRangeGenMathOperator);
+
+        return mathOperators[randomOperator];
     }
 
     public static String generateAnswer(int number1, int number2, String operator) {

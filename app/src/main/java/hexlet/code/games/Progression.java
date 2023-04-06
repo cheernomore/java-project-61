@@ -1,14 +1,13 @@
 package hexlet.code.games;
 
 import org.apache.commons.lang3.RandomUtils;
-import java.util.Arrays;
 
 public class Progression {
 
-    public static Object[][] generateGameRulesAndQASet(int questionAnswersCount) {
-        Object[][] questionAnswerIteration = new Object[questionAnswersCount][2];
+    public static Object[][] generateGameRulesAndQASet() {
+        Object[][] questionAnswerIteration = new Object[3][2];
 
-        for (int i = 0; i < questionAnswersCount; i++) {
+        for (int i = 0; i < questionAnswerIteration.length; i++) {
             int[] progression = generateProgression();
             int randomIndex = getProgressionRandomIndex(progression);
             String question = generateQuestion(progression, randomIndex);
@@ -42,9 +41,13 @@ public class Progression {
     }
 
     public static int[] generateProgression() {
-        int[] progression = new int[RandomUtils.nextInt(5, 10)];
-        int start = RandomUtils.nextInt(0, 100);
-        int step = RandomUtils.nextInt(0, 100);
+        int progressionSizeLenMin = 5;
+        int progressionSizeLenMax = 10;
+        int startRangeGenerateRandomNumber = 0;
+        int endRangeGenerateRandomNumber = 100;
+        int[] progression = new int[RandomUtils.nextInt(progressionSizeLenMin, progressionSizeLenMax)];
+        int start = RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
+        int step = RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
 
         for (int i = 0; i < progression.length; i++) {
             start += step;

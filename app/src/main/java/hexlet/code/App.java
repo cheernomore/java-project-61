@@ -9,8 +9,23 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        String[] games = new String[]{
-            "1 - Greet", "2 - Even", "3 - Calc", "4 - GCD", "5 - Progression", "6 - Prime", "0 - Exit"};
+        final int greetGameIndex = 1;
+        final int evenGameIndex = 2;
+        final int calcGameIndex = 3;
+        final int gcdGameIndex = 4;
+        final int progressionGameIndex = 5;
+        final int primeGameIndex = 6;
+        final int exitGameIndex = 0;
+        final String[] games = new String[]{
+            exitGameIndex + " - Exit",
+            greetGameIndex + " - Greet",
+            evenGameIndex + " - Even",
+            calcGameIndex + " - Calc",
+            gcdGameIndex + " - GCD",
+            progressionGameIndex + " - Progression",
+            primeGameIndex + " - Prime"
+        };
+
         Scanner scanner = new Scanner(System.in);
         int userGameSelected;
 
@@ -22,33 +37,33 @@ public class App {
         userGameSelected = scanner.nextInt();
 
         switch (userGameSelected) {
-            case 1:
+            case greetGameIndex:
                 Engine.launchGame();
                 break;
-            case 2:
+            case evenGameIndex:
                 Engine.launchGame(
                         "Answer 'yes' if the number is even, otherwise answer 'no'.",
-                        Even.generateGameRulesAndQASet(3));
+                        Even.generateGameRulesAndQASet());
                 break;
-            case 3:
+            case calcGameIndex:
                 Engine.launchGame(
                         "What is the result of the expression?",
-                        Calc.generateGameRulesAndQASet(3));
+                        Calc.generateGameRulesAndQASet());
                 break;
-            case 4:
+            case gcdGameIndex:
                 Engine.launchGame(
                         "Find the greatest common divisor of given numbers.",
-                        GCD.generateGameRulesAndQASet(3));
+                        GCD.generateGameRulesAndQASet());
                 break;
-            case 5:
+            case progressionGameIndex:
                 Engine.launchGame(
                         "What number is missing in the progression?",
-                        Progression.generateGameRulesAndQASet(3));
+                        Progression.generateGameRulesAndQASet());
                 break;
-            case 6:
+            case primeGameIndex:
                 Engine.launchGame(
                         "Answer 'yes' if given number is prime. Otherwise answer 'no'.",
-                        Prime.generateGameRulesAndQASet(3));
+                        Prime.generateGameRulesAndQASet());
                 break;
             default:
                 break;

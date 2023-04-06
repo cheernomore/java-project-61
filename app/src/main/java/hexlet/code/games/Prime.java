@@ -4,10 +4,10 @@ import org.apache.commons.lang3.RandomUtils;
 
 public class Prime {
 
-    public static Object[][] generateGameRulesAndQASet(int questionAnswersCount) {
-        Object[][] questionAnswerIteration = new Object[questionAnswersCount][2];
+    public static Object[][] generateGameRulesAndQASet() {
+        Object[][] questionAnswerIteration = new Object[3][2];
 
-        for (int i = 0; i < questionAnswersCount; i++) {
+        for (int i = 0; i < questionAnswerIteration.length; i++) {
             int question = generateQuestion();
             String answer = generateAnswer(question);
             questionAnswerIteration[i][0] = question;
@@ -18,7 +18,10 @@ public class Prime {
     }
 
     public static int generateQuestion() {
-        return RandomUtils.nextInt(0, 100);
+        int startRangeGenerateRandomNumber = 0;
+        int endRangeGenerateRandomNumber = 100;
+
+        return RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
     }
 
     public static String generateAnswer(int question) {

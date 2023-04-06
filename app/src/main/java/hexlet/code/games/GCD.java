@@ -4,10 +4,10 @@ import org.apache.commons.lang3.RandomUtils;
 
 public class GCD {
 
-    public static Object[][] generateGameRulesAndQASet(int questionAnswersCount){
-        Object[][] questionAnswerIteration = new Object[questionAnswersCount][2];
+    public static Object[][] generateGameRulesAndQASet() {
+        Object[][] questionAnswerIteration = new Object[3][2];
 
-        for (int i = 0; i < questionAnswersCount; i++) {
+        for (int i = 0; i < questionAnswerIteration.length; i++) {
             int number1 = generateRandomOperand();
             int number2 = generateRandomOperand();
 
@@ -29,7 +29,10 @@ public class GCD {
     }
 
     public static int generateRandomOperand() {
-        return RandomUtils.nextInt(0, 100);
+        int startRangeGenerateRandomNumber = 0;
+        int endRangeGenerateRandomNumber = 100;
+
+        return RandomUtils.nextInt(startRangeGenerateRandomNumber, endRangeGenerateRandomNumber);
     }
 
     public static int getGCD(int number1, int number2) {
