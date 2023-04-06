@@ -21,7 +21,7 @@ public class GCD {
     }
 
     public static String generateQuestion(int number1, int number2) {
-        return number1 + " " + number2;
+        return String.format("%d %d", number1, number2);
     }
 
     public static String generateAnswer(int number1, int number2) {
