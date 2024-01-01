@@ -9,63 +9,49 @@ import hexlet.code.games.Progression;
 import java.util.Scanner;
 
 public class Engine {
-    static Scanner playerCliInput = new Scanner(System.in);
-    static int playerPointsCounter = 0;
-    static final int WIN_CONDITIONS = 3;
-    static String playerName;
-    static int game;
+    static private final int WIN_CONDITIONS = 3;
+    static private final String[] MAIN_MENU = {"Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
+    static private final Scanner playerCliInput = new Scanner(System.in);
+    static private int playerPointsCounter = 0;
+    static private String playerName;
+    static private int selectedGame;
 
     public static void run() {
-        String[] menu = {"Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
+        loadMainMenu();
+        selectGame();
 
-        System.out.println("Please enter the game number and press Enter.");
-        for (int i = 0; i < menu.length; i++) {
-            String menuItem = menu[i];
-            System.out.println(i + 1 + " - " + menuItem);
-        }
-        System.out.println("0 - Exit");
-        System.out.print("Your choice: ");
-        game = chooseGame();
-
-        switch (game) {
+        switch (selectedGame) {
             case 1:
                 greetings();
                 break;
             case 2:
-                greetings();
-                System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-                startGame(Even.questions, Even.answers);
+                Even.generateQuestionsAndAnswers();
+                startGame(Even.questions, Even.answers, Even.GAME_RULES);
                 break;
             case 3:
-                greetings();
                 Calc.generateQuestionsAndAnswers();
-                System.out.println("What is the result of the expression?");
-                startGame(Calc.questions, Calc.answers);
+                startGame(Calc.questions, Calc.answers, Calc.GAME_RULES);
                 break;
             case 4:
-                greetings();
                 GCD.generateQuestionsAndAnswers();
-                System.out.println("Find the greatest common divisor of given numbers.");
-                startGame(GCD.questions, GCD.answers);
+                startGame(GCD.questions, GCD.answers, GCD.GAME_RULES);
                 break;
             case 5:
-                greetings();
                 Progression.generateQuestionsAndAnswers();
-                System.out.println("What number is missing in the progression?");
-                startGame(Progression.questions, Progression.answers);
+                startGame(Progression.questions, Progression.answers, Progression.GAME_RULES);
                 break;
             case 6:
-                greetings();
                 Prime.generateQuestionsAndAnswers();
-                System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-                startGame(Prime.questions, Prime.answers);
+                startGame(Prime.questions, Prime.answers, Prime.GAME_RULES);
                 break;
             default:
                 break;
         }
     }
 
-    public static void startGame(Object[] questions, Object[] answers) {
+    public static void startGame(Object[] questions, Object[] answers, String gameRules) {
+        greetings();
+        showGameRules(gameRules);
         for (int i = 0; i < questions.length; i++) {
             Object question = questions[i];
             Object correctAnswer = answers[i];
@@ -109,16 +95,28 @@ public class Engine {
         return playerCliInput.nextLine();
     }
 
-    public static int chooseGame() {
-        game = playerCliInput.nextInt();
+    public static void selectGame() {
+        selectedGame = playerCliInput.nextInt();
         playerCliInput.nextLine();
+    }
 
-        return game;
+    public static void loadMainMenu() {
+        System.out.println("Please enter the game number and press Enter.");
+        for (int i = 0; i < MAIN_MENU.length; i++) {
+            String menuItem = MAIN_MENU[i];
+            System.out.println(i + 1 + " - " + menuItem);
+        }
+        System.out.println("0 - Exit");
+        System.out.print("Your choice: ");
     }
 
     public static void greetings() {
         System.out.print("May I have your name? ");
         playerName = setPlayerName();
         System.out.println("Hello, " + playerName + "!");
+    }
+
+    public static void showGameRules(String gameRules) {
+        System.out.println(gameRules);
     }
 }

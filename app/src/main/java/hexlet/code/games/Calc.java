@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 public class Calc {
+    public static final String GAME_RULES = "What is the result of the expression?";
     public static Object[] questions = new Object[3];
     public static Object[] answers = new Object[3];
     public static void generateQuestionsAndAnswers() {

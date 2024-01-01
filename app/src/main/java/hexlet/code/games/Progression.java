@@ -5,6 +5,7 @@ import hexlet.code.Utils;
 import java.util.Arrays;
 
 public class Progression {
+    public static final String GAME_RULES = "What number is missing in the progression?";
     public static String[] questions = new String[3];
     public static Object[] answers = new Object[3];
 
