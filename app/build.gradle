@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'checkstyle'
 }
 
 group = 'hexlet.code'
@@ -25,4 +26,8 @@ compileJava {
 
 application {
     mainClass = 'hexlet.code.App'
+}
+
+tasks.getByName("run") {
+    standardInput = System.in
 }
