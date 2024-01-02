@@ -100,6 +100,7 @@ public class Engine {
     }
 
     public static void loadMainMenu() {
+        System.out.println("Welcome to the Brain Games!");
         System.out.println("Please enter the game number and press Enter.");
         for (int i = 0; i < MAIN_MENU.length; i++) {
             String menuItem = MAIN_MENU[i];
