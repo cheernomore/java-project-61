@@ -19,7 +19,6 @@ public class Engine {
     public static void run() {
         loadMainMenu();
         selectGame();
-
         switch (selectedGame) {
             case 1:
                 greetings();
