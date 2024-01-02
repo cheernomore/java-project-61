@@ -15,7 +15,7 @@ public class Progression {
             String[] progression = generateProgression();
             Object correctAnswer = progression[randomIndex];
             answers[i] = correctAnswer;
-            progression[randomIndex] = "...";
+            progression[randomIndex] = "..";
             questions[i] = Arrays.deepToString(progression);
         }
     }
