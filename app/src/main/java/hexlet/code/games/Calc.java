@@ -19,12 +19,12 @@ public class Calc {
                 first = (int) (Math.random() * (10 - 1) + 1);
                 second = (int) (Math.random() * (10 - 1) + 1);
                 questions[i] = first + " - " + second;
-                answers[i] = Integer.toString(first + second);
+                answers[i] = Integer.toString(first - second);
             } else {
                 first = (int) (Math.random() * (10 - 1) + 1);
                 second = (int) (Math.random() * (10 - 1) + 1);
                 questions[i] = first + " * " + second;
-                answers[i] = Integer.toString(first + second);
+                answers[i] = Integer.toString(first * second);
             }
         }
     }
