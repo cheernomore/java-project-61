@@ -70,6 +70,7 @@ public class Engine {
                 }
             } else {
                 System.out.println(playerAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
+                System.out.println("Let's try again, " + playerName + "!");
                 break;
             }
         }
