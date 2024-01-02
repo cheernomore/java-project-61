@@ -16,7 +16,8 @@ public class Progression {
             Object correctAnswer = progression[randomIndex];
             answers[i] = correctAnswer;
             progression[randomIndex] = "..";
-            questions[i] = Arrays.deepToString(progression).replace("[", "").replace("]", "");
+            questions[i] = Arrays.deepToString(progression)
+                    .replace("[", "").replace("]", "").replace(",", "");
         }
     }
 
