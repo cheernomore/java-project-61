@@ -1,9 +1,6 @@
 package hexlet.code.games;
 
 import hexlet.code.Utils;
-
-import java.util.Arrays;
-
 public class Progression {
     public static final String GAME_RULES = "What number is missing in the progression?";
     public static String[] questions = new String[3];
@@ -16,17 +13,19 @@ public class Progression {
             Object correctAnswer = progression[randomIndex];
             answers[i] = correctAnswer;
             progression[randomIndex] = "..";
-            questions[i] = Arrays.deepToString(progression)
-                    .replace("[", "").replace("]", "").replace(",", "");
+            questions[i] = String.join(" ", progression)
+                    .replace("[", "")
+                    .replace("]", "");
         }
     }
 
     public static String[] generateProgression() {
         int step = Utils.getRandomNumber(1, 10);
+        int counter = 0;
         String[] progression = new String[10];
         for (int i = 0; i < progression.length; i++) {
-            progression[i] = Integer.toString(step);
-            step += step;
+            counter += step;
+            progression[i] = Integer.toString(counter);
         }
         return progression;
     }
