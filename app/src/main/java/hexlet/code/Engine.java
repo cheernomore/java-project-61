@@ -9,17 +9,14 @@ import hexlet.code.games.Progression;
 import java.util.Scanner;
 
 public class Engine {
-    static private final int WIN_CONDITIONS = 3;
-    static private final String[] MAIN_MENU = {"Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
-    static private final Scanner playerCliInput = new Scanner(System.in);
-    static private int playerPointsCounter = 0;
-    static private String playerName;
-    static private int selectedGame;
+    private static final int WIN_CONDITIONS = 3;
 
-    public static void run() {
-        loadMainMenu();
-        selectGame();
-        switch (selectedGame) {
+    private static final Scanner PLAYER_CLI_INPUT = new Scanner(System.in);
+    private static int playerPointsCounter = 0;
+    private static String playerName;
+
+    public static void run(int numberOfSelectedGame) {
+        switch (numberOfSelectedGame) {
             case 1:
                 greetings();
                 break;
@@ -74,6 +71,7 @@ public class Engine {
                 break;
             }
         }
+        PLAYER_CLI_INPUT.close();
     }
     public static void addOnePointToPlayer() {
         playerPointsCounter++;
@@ -84,7 +82,7 @@ public class Engine {
     }
 
     public static Object getPlayerAnswer() {
-        return playerCliInput.nextLine();
+        return PLAYER_CLI_INPUT.nextLine();
     }
 
     public static void congratulations() {
@@ -92,23 +90,7 @@ public class Engine {
     }
 
     public static String setPlayerName() {
-        return playerCliInput.nextLine();
-    }
-
-    public static void selectGame() {
-        selectedGame = playerCliInput.nextInt();
-        playerCliInput.nextLine();
-    }
-
-    public static void loadMainMenu() {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.println("Please enter the game number and press Enter.");
-        for (int i = 0; i < MAIN_MENU.length; i++) {
-            String menuItem = MAIN_MENU[i];
-            System.out.println(i + 1 + " - " + menuItem);
-        }
-        System.out.println("0 - Exit");
-        System.out.print("Your choice: ");
+        return PLAYER_CLI_INPUT.nextLine();
     }
 
     public static void greetings() {
