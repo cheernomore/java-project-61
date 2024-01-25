@@ -10,48 +10,68 @@ import java.util.Scanner;
 
 public class Engine {
     private static final int WIN_CONDITIONS = 3;
-
     private static final Scanner PLAYER_CLI_INPUT = new Scanner(System.in);
     private static int playerPointsCounter = 0;
     private static String playerName;
 
     public static void run(int numberOfSelectedGame) {
+
+        String[][] questionsAnswers;
+        String[] questions;
+        String[] answers;
+        String gameRules;
+
         switch (numberOfSelectedGame) {
             case 1:
                 greetings();
                 break;
             case 2:
-                Even.generateQuestionsAndAnswers();
-                startGame(Even.questions, Even.answers, Even.GAME_RULES);
+                questionsAnswers = Even.transferDataToEngine();
+                questions = questionsAnswers[0];
+                answers = questionsAnswers[1];
+                gameRules = Even.getGameRules();
+                startGame(questions, answers, gameRules);
                 break;
             case 3:
-                Calc.generateQuestionsAndAnswers();
-                startGame(Calc.questions, Calc.answers, Calc.GAME_RULES);
+                questionsAnswers = Calc.transferDataToEngine();
+                questions = questionsAnswers[0];
+                answers = questionsAnswers[1];
+                gameRules = Calc.getGameRules();
+                startGame(questions, answers, gameRules);
                 break;
             case 4:
-                GCD.generateQuestionsAndAnswers();
-                startGame(GCD.questions, GCD.answers, GCD.GAME_RULES);
+                questionsAnswers = GCD.transferDataToEngine();
+                questions = questionsAnswers[0];
+                answers = questionsAnswers[1];
+                gameRules = GCD.getGameRules();
+                startGame(questions, answers, gameRules);
                 break;
             case 5:
-                Progression.generateQuestionsAndAnswers();
-                startGame(Progression.questions, Progression.answers, Progression.GAME_RULES);
+                questionsAnswers = Progression.transferDataToEngine();
+                questions = questionsAnswers[0];
+                answers = questionsAnswers[1];
+                gameRules = Progression.getGameRules();
+                startGame(questions, answers, gameRules);
                 break;
             case 6:
-                Prime.generateQuestionsAndAnswers();
-                startGame(Prime.questions, Prime.answers, Prime.GAME_RULES);
+                questionsAnswers = Prime.transferDataToEngine();
+                questions = questionsAnswers[0];
+                answers = questionsAnswers[1];
+                gameRules = Prime.getGameRules();
+                startGame(questions, answers, gameRules);
                 break;
             default:
                 break;
         }
     }
 
-    public static void startGame(Object[] questions, Object[] answers, String gameRules) {
+    public static void startGame(String[] questions, String[] answers, String gameRules) {
         greetings();
         showGameRules(gameRules);
         for (int i = 0; i < questions.length; i++) {
-            Object question = questions[i];
-            Object correctAnswer = answers[i];
-            Object playerAnswer;
+            String question = questions[i];
+            String correctAnswer = answers[i];
+            String playerAnswer;
 
             askQuestion(question);
             System.out.print("Answer: ");
@@ -81,7 +101,7 @@ public class Engine {
         System.out.println("Question: " + question);
     }
 
-    public static Object getPlayerAnswer() {
+    public static String getPlayerAnswer() {
         return PLAYER_CLI_INPUT.nextLine();
     }
 
