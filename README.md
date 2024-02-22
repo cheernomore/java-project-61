@@ -6,8 +6,8 @@
 
 ### How to play games:
 
-* Even: [![asciicast](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk.svg)](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk) 
-* Calc: [![asciicast](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk.svg)](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk)
-* GCD: [![asciicast](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk.svg)](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk)
-* Progression: [![asciicast](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk.svg)](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk)
-* Prime: [![asciicast](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk.svg)](https://asciinema.org/a/xc21FxxoYBRl23dLLc8dKxouk)
+* Even: [![asciicast](https://asciinema.org/a/QzYRfOXyhxqmqvSwO15ZcDFHU.svg)](https://asciinema.org/a/QzYRfOXyhxqmqvSwO15ZcDFHU) 
+* Calc: [![asciicast](https://asciinema.org/a/HCVs5cdRqrgGfusRc3ax0GoWn.svg)](https://asciinema.org/a/HCVs5cdRqrgGfusRc3ax0GoWn)
+* GCD: [![asciicast](https://asciinema.org/a/CFJKUDPo7Y8IefbKImuKS4zr3.svg)](https://asciinema.org/a/CFJKUDPo7Y8IefbKImuKS4zr3)
+* Progression: [![asciicast](https://asciinema.org/a/t4US71Y9Ieq2X4mtsHMQ7PY60.svg)](https://asciinema.org/a/t4US71Y9Ieq2X4mtsHMQ7PY60)
+* Prime: [![asciicast](https://asciinema.org/a/F2KPXed59WII1KHRK3Pv6qUlv.svg)](https://asciinema.org/a/F2KPXed59WII1KHRK3Pv6qUlv)

@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class App {
     private static final Scanner PLAYER_INPUT = new Scanner(System.in);
     private static final String[] MAIN_MENU = {"Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
-
     public static void main(String[] args) {
         String[][] gameData;
 
