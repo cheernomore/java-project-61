@@ -2,12 +2,20 @@ package hexlet.code;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.Scanner;
 
 public class Utils {
 
-    public static Properties properties = loadPropertiesFile("src/main/java/hexlet/code/config.properties");
+    public static Path relativePath = Paths.get("resources", "config.properties");
+
+    // Преобразование относительного пути в абсолютный
+    public static Path absolutePath = relativePath.toAbsolutePath();
+
+
+    public static Properties properties = loadPropertiesFile(absolutePath.toString());
     public static int generateRandomInt(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
