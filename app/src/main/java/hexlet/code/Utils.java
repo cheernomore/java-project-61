@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Utils {
 
-    public static Path relativePath = Paths.get("resources", "config.properties");
+    public static Path relativePath = Paths.get("src/main/resources", "config.properties");
 
     // Преобразование относительного пути в абсолютный
     public static Path absolutePath = relativePath.toAbsolutePath();
