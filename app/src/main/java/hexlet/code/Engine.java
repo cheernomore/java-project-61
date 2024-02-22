@@ -29,6 +29,7 @@ public class Engine {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(."
                         + " Correct answer was '" + correctAnswer + "'");
                 System.out.println("Let's try again, " + playerName + "!");
+                break;
             }
 
             if (playerPoints == POINTS_TO_WIN) {
