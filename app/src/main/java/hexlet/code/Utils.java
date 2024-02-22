@@ -8,13 +8,8 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class Utils {
-
-    public static Path relativePath = Paths.get("src/main/resources", "config.properties");
-
-    // Преобразование относительного пути в абсолютный
+    public static Path relativePath = Paths.get("app/src/main/resources", "config.properties");
     public static Path absolutePath = relativePath.toAbsolutePath();
-
-
     public static Properties properties = loadPropertiesFile(absolutePath.toString());
     public static int generateRandomInt(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
