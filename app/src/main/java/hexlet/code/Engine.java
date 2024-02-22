@@ -17,7 +17,7 @@ public class Engine {
 
         for (int i = 0; i < questions.length; i++) {
             question = questions[i];
-            System.out.println("Question:" + question);
+            System.out.println("Question: " + question);
             userAnswer = getUserAnswer();
             correctAnswer = answers[i];
             System.out.println("Your answer: " + userAnswer);

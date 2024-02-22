@@ -24,7 +24,6 @@ public class App {
         System.out.print("Your choice: ");
         int numberOfSelectedGame = Integer.parseInt(PLAYER_INPUT.nextLine());
 
-        System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         String playerName = PLAYER_INPUT.nextLine();
         Utils.setProperty("playerName", playerName);
