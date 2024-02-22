@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Utils {
 
-    public static Properties properties = loadPropertiesFile("src/main/resources/config.properties");
+    public static Properties properties = loadPropertiesFile("src/main/java/hexlet/code/config.properties");
     public static int generateRandomInt(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
