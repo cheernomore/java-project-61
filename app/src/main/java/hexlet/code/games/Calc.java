@@ -1,18 +1,19 @@
 package hexlet.code.games;
 
+import hexlet.code.Utils;
+
 public class Calc {
     public static final String GAME_RULES = "What is the result of the expression?";
-    public static final int DEFAULT_QUESTIONS_COUNT = 3;
-    public static final int DEFAULT_ANSWERS_COUNT = 3;
-
-    public static String[][] transferDataToEngine() {
-        return generateGameData();
-    }
+    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
+    public static final double PLUS_CONDITION_LIMIT = Double.parseDouble(Utils.getProperty("calcPlusConditionLimit"));
+    public static final double MINUS_CONDITION_LIMIT = Double.parseDouble(Utils.getProperty("calcMinusConditionLimit"));
+    public static final int MIN_GENERATED_VALUE = Integer.parseInt(Utils.getProperty("calcMinGeneratedValue"));
+    public static final int MAX_GENERATED_VALUE = Integer.parseInt(Utils.getProperty("calcMaxGeneratedValue"));
 
     public static String[][] generateGameData() {
-        String[] questions = new String[DEFAULT_QUESTIONS_COUNT];
-        String[] answers = new String[DEFAULT_ANSWERS_COUNT];
-        String[][] questionsAnswers = new String[DEFAULT_QUESTIONS_COUNT][DEFAULT_ANSWERS_COUNT];
+        String[] questions = new String[QUESTIONS_COUNT];
+        String[] answers = new String[QUESTIONS_COUNT];
+        String[][] questionsAnswers = new String[QUESTIONS_COUNT][QUESTIONS_COUNT];
 
 
         double conditions = Math.random();
@@ -20,19 +21,19 @@ public class Calc {
         int second;
 
         for (int i = 0; i < questions.length; i++) {
-            if (conditions < 0.3) {
-                first = (int) (Math.random() * (10 - 1) + 1);
-                second = (int) (Math.random() * (10 - 1) + 1);
+            if (conditions < PLUS_CONDITION_LIMIT) {
+                first = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
+                second = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
                 questions[i] = first + " + " + second;
                 answers[i] = Integer.toString(first + second);
-            } else if (conditions > 0.3 && conditions < 0.6) {
-                first = (int) (Math.random() * (10 - 1) + 1);
-                second = (int) (Math.random() * (10 - 1) + 1);
+            } else if (conditions > PLUS_CONDITION_LIMIT && conditions < MINUS_CONDITION_LIMIT) {
+                first = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
+                second = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
                 questions[i] = first + " - " + second;
                 answers[i] = Integer.toString(first - second);
             } else {
-                first = (int) (Math.random() * (10 - 1) + 1);
-                second = (int) (Math.random() * (10 - 1) + 1);
+                first = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
+                second = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
                 questions[i] = first + " * " + second;
                 answers[i] = Integer.toString(first * second);
             }
