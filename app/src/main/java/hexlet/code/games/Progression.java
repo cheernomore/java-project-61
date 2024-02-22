@@ -1,13 +1,14 @@
 package hexlet.code.games;
 
+import hexlet.code.Config;
 import hexlet.code.Utils;
 public class Progression {
     public static final String GAME_RULES = "What number is missing in the progression?";
-    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
-    public static final int LOWER_BOUND = Integer.parseInt(Utils.getProperty("progressionLowerBound"));
-    public static final int UPPER_BOUND = Integer.parseInt(Utils.getProperty("progressionUpperBound"));
-    public static final int MIN_STEP_VALUE = Integer.parseInt(Utils.getProperty("progressionMinStepValue"));
-    public static final int MAX_STEP_VALUE = Integer.parseInt(Utils.getProperty("progressionMaxStepValue"));
+    public static final int QUESTIONS_COUNT = Config.QUESTION_COUNT;
+    public static final int LOWER_BOUND = Config.PROGRESSION_LOWER_BOUND;
+    public static final int UPPER_BOUND = Config.PROGRESSION_UPPER_BOUND;
+    public static final int MIN_STEP_VALUE = Config.PROGRESSION_MIN_STEP_VALUE;
+    public static final int MAX_STEP_VALUE = Config.PROGRESSION_MAX_STEP_VALUE;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];

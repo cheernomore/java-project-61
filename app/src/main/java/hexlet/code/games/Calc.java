@@ -1,14 +1,15 @@
 package hexlet.code.games;
 
+import hexlet.code.Config;
 import hexlet.code.Utils;
 
 public class Calc {
     public static final String GAME_RULES = "What is the result of the expression?";
-    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
-    public static final double PLUS_CONDITION_LIMIT = Double.parseDouble(Utils.getProperty("calcPlusConditionLimit"));
-    public static final double MINUS_CONDITION_LIMIT = Double.parseDouble(Utils.getProperty("calcMinusConditionLimit"));
-    public static final int MIN_GENERATED_VALUE = Integer.parseInt(Utils.getProperty("calcMinGeneratedValue"));
-    public static final int MAX_GENERATED_VALUE = Integer.parseInt(Utils.getProperty("calcMaxGeneratedValue"));
+    public static final int QUESTIONS_COUNT = Config.QUESTION_COUNT;
+    public static final double PLUS_CONDITION_LIMIT = Config.CALC_PLUS_CONDITION_LIMIT;
+    public static final double MINUS_CONDITION_LIMIT = Config.CALC_MINUS_CONDITION_LIMIT;
+    public static final int MIN_GENERATED_VALUE = Config.CALC_MIN_GENERATED_VALUE;
+    public static final int MAX_GENERATED_VALUE = Config.CALC_MAX_GENERATED_VALUE;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];

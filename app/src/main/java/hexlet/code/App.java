@@ -25,7 +25,7 @@ public class App {
 
         System.out.print("May I have your name? ");
         String playerName = PLAYER_INPUT.nextLine();
-        Utils.setProperty("playerName", playerName);
+        Config.setPlayerName(playerName);
 
         gameData = gameFactory(numberOfSelectedGame);
         String gameRules = gameRulesFactory(numberOfSelectedGame);

@@ -4,9 +4,9 @@ import static hexlet.code.Utils.getUserAnswer;
 import static hexlet.code.Utils.isUserAnswerCorrect;
 
 public class Engine {
-    public static final  int POINTS_TO_WIN = Integer.parseInt(Utils.getProperty("pointsToWin"));
-    public static int playerPoints = Integer.parseInt(Utils.getProperty("playerPoints"));
-    public static String playerName = Utils.getProperty("playerName");
+    public static final  int POINTS_TO_WIN = Config.POINTS_TO_WIN;
+    public static int playerPoints = Config.playerPoints;
+    public static String playerName = Config.getPlayerName();
 
     public static void launchGame(String[][] gameData) {
         String[] questions = gameData[0];

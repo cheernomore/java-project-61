@@ -1,12 +1,13 @@
 package hexlet.code.games;
 
+import hexlet.code.Config;
 import hexlet.code.Utils;
 
 public class Even {
     public static final String GAME_RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
-    public static final int LOWER_BOUND = Integer.parseInt(Utils.getProperty("evenLowerBound"));
-    public static final int UPPER_BOUND = Integer.parseInt(Utils.getProperty("evenUpperBound"));
+    public static final int QUESTIONS_COUNT = Config.QUESTION_COUNT;
+    public static final int LOWER_BOUND = Config.EVEN_LOWER_BOUND;
+    public static final int UPPER_BOUND = Config.EVEN_UPPER_BOUND;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];

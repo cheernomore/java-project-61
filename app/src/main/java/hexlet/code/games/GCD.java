@@ -1,12 +1,13 @@
 package hexlet.code.games;
 
+import hexlet.code.Config;
 import hexlet.code.Utils;
 
 public class GCD {
     public static final String GAME_RULES = "Find the greatest common divisor of given numbers.";
-    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
-    public static final int LOWER_BOUND = Integer.parseInt(Utils.getProperty("gcdLowerBound"));
-    public static final int UPPER_BOUND = Integer.parseInt(Utils.getProperty("gcdUpperBound"));
+    public static final int QUESTIONS_COUNT = Config.QUESTION_COUNT;
+    public static final int LOWER_BOUND = Config.GCD_LOWER_BOUND;
+    public static final int UPPER_BOUND = Config.GCD_UPPER_BOUND;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];
