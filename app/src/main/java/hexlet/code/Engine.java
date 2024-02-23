@@ -29,11 +29,13 @@ public class Engine {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(."
                         + " Correct answer was '" + correctAnswer + "'");
                 System.out.println("Let's try again, " + PLAYER_NAME + "!");
+                PLAYER_INPUT.close();
                 break;
             }
 
             if (playerPoints == POINTS_TO_WIN) {
                 System.out.println("Congratulations, " + PLAYER_NAME + "!");
+                PLAYER_INPUT.close();
             }
         }
     }

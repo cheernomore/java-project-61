@@ -4,7 +4,7 @@ public class Config {
 
     public static final int POINTS_TO_WIN = 3;
     public static final int QUESTION_COUNT = 3;
-    public static int playerPoints = 0;
+    public static final int PLAYER_POINTS = 0;
     public static String playerName = "Player";
 
     public static final double CALC_PLUS_CONDITION_LIMIT = 0.3;
