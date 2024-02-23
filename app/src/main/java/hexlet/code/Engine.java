@@ -1,12 +1,12 @@
 package hexlet.code;
 
-import static hexlet.code.Utils.getUserAnswer;
-import static hexlet.code.Utils.isUserAnswerCorrect;
+import java.util.Scanner;
 
 public class Engine {
-    public static final  int POINTS_TO_WIN = Config.POINTS_TO_WIN;
-    public static int playerPoints = Config.playerPoints;
-    public static String playerName = Config.getPlayerName();
+    private static final int POINTS_TO_WIN = Config.POINTS_TO_WIN;
+    private static final String PLAYER_NAME = Config.getPlayerName();
+    private static final Scanner PLAYER_INPUT = new Scanner(System.in);
+    private static int playerPoints = Config.PLAYER_POINTS;
 
     public static void launchGame(String[][] gameData) {
         String[] questions = gameData[0];
@@ -28,13 +28,21 @@ public class Engine {
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(."
                         + " Correct answer was '" + correctAnswer + "'");
-                System.out.println("Let's try again, " + playerName + "!");
+                System.out.println("Let's try again, " + PLAYER_NAME + "!");
                 break;
             }
 
             if (playerPoints == POINTS_TO_WIN) {
-                System.out.println("Congratulations, " + playerName + "!");
+                System.out.println("Congratulations, " + PLAYER_NAME + "!");
             }
         }
+    }
+
+    private static boolean isUserAnswerCorrect(String userAnswer, String correctAnswer) {
+        return userAnswer.equals(correctAnswer);
+    }
+
+    private static String getUserAnswer() {
+        return PLAYER_INPUT.nextLine();
     }
 }
