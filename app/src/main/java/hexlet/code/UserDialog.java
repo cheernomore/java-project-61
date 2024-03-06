@@ -44,6 +44,9 @@ public class UserDialog {
             System.out.println();
             System.out.println("Welcome to the Brain Games!");
             System.exit(0);
+        } else if (selectedGameNumber == 0) {
+            System.out.println("Be brave");
+            System.exit(0);
         }
     }
 

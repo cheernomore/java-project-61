@@ -59,22 +59,22 @@ public class Engine {
 
     public static String[][] selectGame(int gameNumber) {
         return switch (gameNumber) {
-            case 1 -> Even.generateGameData();
-            case 2 -> Calc.generateGameData();
-            case 3 -> GCD.generateGameData();
-            case 4 -> Progression.generateGameData();
-            case 5 -> Prime.generateGameData();
+            case 2 -> Even.generateGameData();
+            case 3 -> Calc.generateGameData();
+            case 4 -> GCD.generateGameData();
+            case 5 -> Progression.generateGameData();
+            case 6 -> Prime.generateGameData();
             default -> null;
         };
     }
 
     public static String getGameRules(int gameNumber) {
         return switch (gameNumber) {
-            case 1 -> Even.GAME_RULES;
-            case 2 -> Calc.GAME_RULES;
-            case 3 -> GCD.GAME_RULES;
-            case 4 -> Progression.GAME_RULES;
-            case 5 -> Prime.GAME_RULES;
+            case 2 -> Even.GAME_RULES;
+            case 3 -> Calc.GAME_RULES;
+            case 4 -> GCD.GAME_RULES;
+            case 5 -> Progression.GAME_RULES;
+            case 6 -> Prime.GAME_RULES;
             default -> null;
         };
     }
