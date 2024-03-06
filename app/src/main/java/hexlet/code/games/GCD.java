@@ -4,9 +4,9 @@ import hexlet.code.Utils;
 
 public class GCD {
     public static final String GAME_RULES = "Find the greatest common divisor of given numbers.";
-    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
-    public static final int LOWER_BOUND = Integer.parseInt(Utils.getProperty("gcdLowerBound"));
-    public static final int UPPER_BOUND = Integer.parseInt(Utils.getProperty("gcdUpperBound"));
+    public static final int QUESTIONS_COUNT = 3;
+    public static final int LOWER_BOUND = 1;
+    public static final int UPPER_BOUND = 10;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];
@@ -28,9 +28,5 @@ public class GCD {
 
     public static int gcd(int first, int second) {
         return second == 0 ? first : gcd(second, first % second);
-    }
-
-    public static String getGameRules() {
-        return GAME_RULES;
     }
 }

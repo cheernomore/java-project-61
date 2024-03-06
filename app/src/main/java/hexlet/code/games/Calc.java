@@ -4,11 +4,11 @@ import hexlet.code.Utils;
 
 public class Calc {
     public static final String GAME_RULES = "What is the result of the expression?";
-    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
-    public static final double PLUS_CONDITION_LIMIT = Double.parseDouble(Utils.getProperty("calcPlusConditionLimit"));
-    public static final double MINUS_CONDITION_LIMIT = Double.parseDouble(Utils.getProperty("calcMinusConditionLimit"));
-    public static final int MIN_GENERATED_VALUE = Integer.parseInt(Utils.getProperty("calcMinGeneratedValue"));
-    public static final int MAX_GENERATED_VALUE = Integer.parseInt(Utils.getProperty("calcMaxGeneratedValue"));
+    public static final int QUESTIONS_COUNT = 3;
+    public static final double PLUS_CONDITION_LIMIT = 0.3;
+    public static final double MINUS_CONDITION_LIMIT = 0.6;
+    public static final int MIN_GENERATED_VALUE = 1;
+    public static final int MAX_GENERATED_VALUE = 10;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];
@@ -43,9 +43,5 @@ public class Calc {
         questionsAnswers[1] = answers;
 
         return questionsAnswers;
-    }
-
-    public static String getGameRules() {
-        return GAME_RULES;
     }
 }

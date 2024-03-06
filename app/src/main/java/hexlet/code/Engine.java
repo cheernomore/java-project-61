@@ -1,24 +1,42 @@
 package hexlet.code;
 
-import static hexlet.code.Utils.getUserAnswer;
-import static hexlet.code.Utils.isUserAnswerCorrect;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
+
+import java.util.Scanner;
 
 public class Engine {
-    public static final  int POINTS_TO_WIN = Integer.parseInt(Utils.getProperty("pointsToWin"));
-    public static int playerPoints = Integer.parseInt(Utils.getProperty("playerPoints"));
-    public static String playerName = Utils.getProperty("playerName");
+    private static final int POINTS_TO_WIN = 3;
+    private static boolean isWin;
+    private static String errorMessage;
+    public static void launchGame(int selectedGameNumber) {
+        Scanner scanner = new Scanner(System.in);
+        String[][] gameData = selectGame(selectedGameNumber);
 
-    public static void launchGame(String[][] gameData) {
+        if (gameData == null) {
+            System.out.println("Игры не существует");
+            System.exit(0);
+        }
+
+        UserDialog.setPlayerName();
+
+        int playerPoints = 0;
         String[] questions = gameData[0];
         String[] answers = gameData[1];
         String question;
         String correctAnswer;
         String userAnswer;
+        String gameRules = getGameRules(selectedGameNumber);
+
+        System.out.println(gameRules);
 
         for (int i = 0; i < questions.length; i++) {
             question = questions[i];
             System.out.println("Question: " + question);
-            userAnswer = getUserAnswer();
+            userAnswer = scanner.nextLine();
             correctAnswer = answers[i];
             System.out.println("Your answer: " + userAnswer);
 
@@ -26,14 +44,50 @@ public class Engine {
                 System.out.println("Correct!");
                 playerPoints++;
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(."
-                        + " Correct answer was '" + correctAnswer + "'");
-                System.out.println("Let's try again, " + playerName + "!");
+                errorMessage = "'" + userAnswer + "' is wrong answer ;(."
+                        + " Correct answer was '" + correctAnswer + "'";
+                break;
             }
 
             if (playerPoints == POINTS_TO_WIN) {
-                System.out.println("Congratulations, " + playerName + "!");
+                isWin = true;
             }
         }
+
+        scanner.close();
+    }
+
+    public static String[][] selectGame(int gameNumber) {
+        return switch (gameNumber) {
+            case 1 -> Even.generateGameData();
+            case 2 -> Calc.generateGameData();
+            case 3 -> GCD.generateGameData();
+            case 4 -> Progression.generateGameData();
+            case 5 -> Prime.generateGameData();
+            default -> null;
+        };
+    }
+
+    public static String getGameRules(int gameNumber) {
+        return switch (gameNumber) {
+            case 1 -> Even.GAME_RULES;
+            case 2 -> Calc.GAME_RULES;
+            case 3 -> GCD.GAME_RULES;
+            case 4 -> Progression.GAME_RULES;
+            case 5 -> Prime.GAME_RULES;
+            default -> null;
+        };
+    }
+
+    public static boolean isWin() {
+        return isWin;
+    }
+
+    public static String getErrorMessage() {
+        return errorMessage;
+    }
+
+    private static boolean isUserAnswerCorrect(String userAnswer, String correctAnswer) {
+        return userAnswer.equals(correctAnswer);
     }
 }

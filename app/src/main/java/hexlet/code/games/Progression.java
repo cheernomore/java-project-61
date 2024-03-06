@@ -3,11 +3,11 @@ package hexlet.code.games;
 import hexlet.code.Utils;
 public class Progression {
     public static final String GAME_RULES = "What number is missing in the progression?";
-    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
-    public static final int LOWER_BOUND = Integer.parseInt(Utils.getProperty("progressionLowerBound"));
-    public static final int UPPER_BOUND = Integer.parseInt(Utils.getProperty("progressionUpperBound"));
-    public static final int MIN_STEP_VALUE = Integer.parseInt(Utils.getProperty("progressionMinStepValue"));
-    public static final int MAX_STEP_VALUE = Integer.parseInt(Utils.getProperty("progressionMaxStepValue"));
+    public static final int QUESTIONS_COUNT = 3;
+    public static final int LOWER_BOUND = 1;
+    public static final int UPPER_BOUND = 10;
+    public static final int MIN_STEP_VALUE = 2;
+    public static final int MAX_STEP_VALUE = 100;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];
@@ -40,9 +40,5 @@ public class Progression {
             progression[i] = Integer.toString(counter);
         }
         return progression;
-    }
-
-    public static String getGameRules() {
-        return GAME_RULES;
     }
 }

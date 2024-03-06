@@ -4,9 +4,9 @@ import hexlet.code.Utils;
 
 public class Prime {
     public static final String GAME_RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    public static final int QUESTIONS_COUNT = Integer.parseInt(Utils.getProperty("questionsCount"));
-    public static final int LOWER_BOUND = Integer.parseInt(Utils.getProperty("primeLowerBound"));
-    public static final int UPPER_BOUND = Integer.parseInt(Utils.getProperty("primeUpperBound"));
+    public static final int QUESTIONS_COUNT = 3;
+    public static final int LOWER_BOUND = 1;
+    public static final int UPPER_BOUND = 10;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];
@@ -16,7 +16,7 @@ public class Prime {
         for (int i = 0; i < questions.length; i++) {
             int num = Utils.generateRandomInt(LOWER_BOUND, UPPER_BOUND);
             questions[i] = Integer.toString(num);
-            answers[i] = isPrime(num);
+            answers[i] = isPrime(num) ? "yes" : "no";
         }
 
         questionsAnswers[0] = questions;
@@ -25,19 +25,15 @@ public class Prime {
         return questionsAnswers;
     }
 
-    public static String isPrime(int n) {
+    public static boolean isPrime(int n) {
         if (n < 2) {
-            return "no";
+            return false;
         }
         for (int i = 2; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
-                return "no";
+                return false;
             }
         }
-        return "yes";
-    }
-
-    public static String getGameRules() {
-        return GAME_RULES;
+        return true;
     }
 }
