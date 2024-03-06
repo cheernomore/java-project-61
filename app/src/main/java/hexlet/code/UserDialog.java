@@ -9,7 +9,6 @@ public class UserDialog {
     private static String playerName;
     private static int selectedGameNumber;
     public static void welcomeDialog() {
-        System.out.println("Welcome to the Brain Games!");
         System.out.println("Please enter the game number and press Enter.");
         for (int i = 1; i < MAIN_MENU.length + 1; i++) {
             String menuItem = MAIN_MENU[i - 1];
@@ -22,8 +21,11 @@ public class UserDialog {
     }
 
     public static void setPlayerName() {
+        System.out.println();
+        System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         playerName = PLAYER_INPUT.nextLine();
+        System.out.println("Hello, " + playerName + "!");
     }
 
     public static void finalDialog(boolean isWin, String errorMessage) {
@@ -39,9 +41,10 @@ public class UserDialog {
 
     public static void greetings(int selectedGameNumber) {
         if (selectedGameNumber == 1) {
+            System.out.println();
             System.out.println("Welcome to the Brain Games!");
+            System.exit(0);
         }
-        System.exit(0);
     }
 
     public static int getSelectedGameNumber() {
