@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Engine {
@@ -28,9 +29,9 @@ public class Engine {
         for (int i = 0; i < questions.length; i++) {
             question = questions[i];
             System.out.println("Question: " + question);
+            System.out.print("Your answer: ");
             userAnswer = scanner.next();
             correctAnswer = answers[i];
-            System.out.println("Your answer: " + userAnswer);
 
             if (isUserAnswerCorrect(userAnswer, correctAnswer)) {
                 System.out.println("Correct!");
