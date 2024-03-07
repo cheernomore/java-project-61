@@ -10,9 +10,12 @@ public class App {
     public static void main(String[] args) {
         UserDialog.welcomeDialog();
         UserDialog.greetings();
+
         String[][] gameData = selectGame(UserDialog.getSelectedGameNumber());
         String gameRules = getGameRules(UserDialog.getSelectedGameNumber());
+
         Engine.launchGame(gameData, gameRules);
+
         UserDialog.finalDialog(Engine.isWin(), Engine.getErrorMessage());
     }
     public static String[][] selectGame(int gameNumber) {
