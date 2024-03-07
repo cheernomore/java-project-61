@@ -5,9 +5,9 @@ public class Progression {
     public static final String GAME_RULES = "What number is missing in the progression?";
     public static final int QUESTIONS_COUNT = 3;
     public static final int LOWER_BOUND = 1;
-    public static final int UPPER_BOUND = 10;
+    public static final int UPPER_BOUND = 100;
     public static final int MIN_STEP_VALUE = 2;
-    public static final int MAX_STEP_VALUE = 100;
+    public static final int MAX_STEP_VALUE = 10;
 
     public static String[][] generateGameData() {
         String[] questions = new String[QUESTIONS_COUNT];

@@ -17,14 +17,21 @@ public class UserDialog {
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
 
-        selectedGameNumber = Integer.parseInt(PLAYER_INPUT.nextLine());
+        try {
+            selectedGameNumber = Integer.parseInt(PLAYER_INPUT.next());
+        } catch (Exception e) {
+            System.out.println("To play, enter a number from 2 to 6");
+            System.out.println("Greetings - enter 1");
+            System.out.println("Log out - enter 0");
+            System.out.println("The remaining characters will result in an error");
+        }
     }
 
     public static void setPlayerName() {
         System.out.println();
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        playerName = PLAYER_INPUT.nextLine();
+        playerName = PLAYER_INPUT.next();
         System.out.println("Hello, " + playerName + "!");
     }
 
@@ -39,7 +46,7 @@ public class UserDialog {
         PLAYER_INPUT.close();
     }
 
-    public static void greetings(int selectedGameNumber) {
+    public static void greetings() {
         if (selectedGameNumber == 1) {
             System.out.println();
             System.out.println("Welcome to the Brain Games!");
