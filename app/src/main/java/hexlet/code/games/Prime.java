@@ -24,19 +24,19 @@ public class Prime {
     }
 
     public static void run() {
-        String[][] gameData = generateGameData(5);
+        String[][] gameData = generateGameData(3);
         Engine.launchGame(gameData, GAME_RULES);
     }
 
     public static boolean isPrime(int n) {
         if (n < 2) {
-            return true;
+            return false;
         }
         for (int i = 2; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }

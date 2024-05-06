@@ -27,7 +27,7 @@ public class Even {
     }
 
     public static void run() {
-        String[][] gameData = generateGameData(5);
+        String[][] gameData = generateGameData(3);
         Engine.launchGame(gameData, GAME_RULES);
     }
 
