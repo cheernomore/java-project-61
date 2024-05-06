@@ -36,7 +36,7 @@ public class App {
             case 4 -> GCD.run();
             case 5 -> Progression.run();
             case 6 -> Prime.run();
-            default -> System.out.println("Scr!");
+            default -> System.out.println("Введено некорректное число\nВведите число от 1 до 6.");
         }
     }
 }
