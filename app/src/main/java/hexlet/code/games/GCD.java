@@ -1,18 +1,17 @@
 package hexlet.code.games;
 
-import hexlet.code.Config;
+import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class GCD {
     public static final String GAME_RULES = "Find the greatest common divisor of given numbers.";
-    public static final int QUESTIONS_COUNT = Config.QUESTION_COUNT;
-    public static final int LOWER_BOUND = Config.GCD_LOWER_BOUND;
-    public static final int UPPER_BOUND = Config.GCD_UPPER_BOUND;
+    public static final int LOWER_BOUND = 1;
+    public static final int UPPER_BOUND = 100;
 
-    public static String[][] generateGameData() {
-        String[] questions = new String[QUESTIONS_COUNT];
-        String[] answers = new String[QUESTIONS_COUNT];
-        String[][] questionsAnswers = new String[QUESTIONS_COUNT][QUESTIONS_COUNT];
+    public static String[][] generateGameData(int questionsCount) {
+        String[] questions = new String[questionsCount];
+        String[] answers = new String[questionsCount];
+        String[][] questionsAnswers = new String[questionsCount][questionsCount];
 
         for (int i = 0; i < questions.length; i++) {
             int first = Utils.generateRandomInt(LOWER_BOUND, UPPER_BOUND);
@@ -31,7 +30,8 @@ public class GCD {
         return second == 0 ? first : gcd(second, first % second);
     }
 
-    public static String getGameRules() {
-        return GAME_RULES;
+    public static void run() {
+        String[][] gameData = generateGameData(5);
+        Engine.launchGame(gameData, GAME_RULES);
     }
 }

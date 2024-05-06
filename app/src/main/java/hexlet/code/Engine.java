@@ -3,22 +3,29 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    private static final int POINTS_TO_WIN = Config.POINTS_TO_WIN;
-    private static final String PLAYER_NAME = Config.getPlayerName();
-    private static final Scanner PLAYER_INPUT = new Scanner(System.in);
-    private static int playerPoints = Config.PLAYER_POINTS;
+    private static final int POINTS_TO_WIN = 3;
+    public static void launchGame(String[][] gameData, String gameRules) {
+        Scanner scanner = new Scanner(System.in);
 
-    public static void launchGame(String[][] gameData) {
+        int playerPoints = 0;
+        String playerName;
+
         String[] questions = gameData[0];
         String[] answers = gameData[1];
         String question;
         String correctAnswer;
         String userAnswer;
 
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name?");
+        playerName = scanner.nextLine();
+        System.out.println("Hello, " + playerName + "!");
+        System.out.println(gameRules);
+
         for (int i = 0; i < questions.length; i++) {
             question = questions[i];
             System.out.println("Question: " + question);
-            userAnswer = getUserAnswer();
+            userAnswer = scanner.nextLine();
             correctAnswer = answers[i];
             System.out.println("Your answer: " + userAnswer);
 
@@ -28,23 +35,20 @@ public class Engine {
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(."
                         + " Correct answer was '" + correctAnswer + "'");
-                System.out.println("Let's try again, " + PLAYER_NAME + "!");
-                PLAYER_INPUT.close();
+                System.out.println("Let's try again, " + playerName + "!");
+                scanner.close();
                 break;
             }
 
             if (playerPoints == POINTS_TO_WIN) {
-                System.out.println("Congratulations, " + PLAYER_NAME + "!");
-                PLAYER_INPUT.close();
+                System.out.println("Congratulations, " + playerName + "!");
+                scanner.close();
+                break;
             }
         }
     }
 
     private static boolean isUserAnswerCorrect(String userAnswer, String correctAnswer) {
         return userAnswer.equals(correctAnswer);
-    }
-
-    private static String getUserAnswer() {
-        return PLAYER_INPUT.nextLine();
     }
 }

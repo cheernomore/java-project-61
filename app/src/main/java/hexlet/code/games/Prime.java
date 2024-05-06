@@ -1,23 +1,20 @@
 package hexlet.code.games;
 
-import hexlet.code.Config;
+import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
     public static final String GAME_RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    public static final int QUESTIONS_COUNT = Config.QUESTION_COUNT;
-    public static final int LOWER_BOUND = Config.PRIME_LOWER_BOUND;
-    public static final int UPPER_BOUND = Config.PRIME_UPPER_BOUND;
 
-    public static String[][] generateGameData() {
-        String[] questions = new String[QUESTIONS_COUNT];
-        String[] answers = new String[QUESTIONS_COUNT];
-        String[][] questionsAnswers = new String[QUESTIONS_COUNT][QUESTIONS_COUNT];
+    public static String[][] generateGameData(int questionsCount) {
+        String[] questions = new String[questionsCount];
+        String[] answers = new String[questionsCount];
+        String[][] questionsAnswers = new String[questionsCount][questionsCount];
 
         for (int i = 0; i < questions.length; i++) {
-            int num = Utils.generateRandomInt(LOWER_BOUND, UPPER_BOUND);
+            int num = Utils.generateRandomInt(1, 100);
             questions[i] = Integer.toString(num);
-            answers[i] = isPrime(num);
+            answers[i] = isPrime(num) ? "yes" : "no";
         }
 
         questionsAnswers[0] = questions;
@@ -26,19 +23,20 @@ public class Prime {
         return questionsAnswers;
     }
 
-    public static String isPrime(int n) {
+    public static void run() {
+        String[][] gameData = generateGameData(5);
+        Engine.launchGame(gameData, GAME_RULES);
+    }
+
+    public static boolean isPrime(int n) {
         if (n < 2) {
-            return "no";
+            return true;
         }
         for (int i = 2; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
-                return "no";
+                return true;
             }
         }
-        return "yes";
-    }
-
-    public static String getGameRules() {
-        return GAME_RULES;
+        return false;
     }
 }

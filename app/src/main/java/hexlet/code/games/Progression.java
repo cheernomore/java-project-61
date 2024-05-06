@@ -1,23 +1,18 @@
 package hexlet.code.games;
 
-import hexlet.code.Config;
+import hexlet.code.Engine;
 import hexlet.code.Utils;
 public class Progression {
     public static final String GAME_RULES = "What number is missing in the progression?";
-    public static final int QUESTIONS_COUNT = Config.QUESTION_COUNT;
-    public static final int LOWER_BOUND = Config.PROGRESSION_LOWER_BOUND;
-    public static final int UPPER_BOUND = Config.PROGRESSION_UPPER_BOUND;
-    public static final int MIN_STEP_VALUE = Config.PROGRESSION_MIN_STEP_VALUE;
-    public static final int MAX_STEP_VALUE = Config.PROGRESSION_MAX_STEP_VALUE;
 
-    public static String[][] generateGameData() {
-        String[] questions = new String[QUESTIONS_COUNT];
-        String[] answers = new String[QUESTIONS_COUNT];
-        String[][] questionsAnswers = new String[QUESTIONS_COUNT][QUESTIONS_COUNT];
+    public static String[][] generateGameData(int questionsCount) {
+        String[] questions = new String[questionsCount];
+        String[] answers = new String[questionsCount];
+        String[][] questionsAnswers = new String[questionsCount][questionsCount];
 
         for (int i = 0; i < questions.length; i++) {
-            int randomIndex = Utils.generateRandomInt(MIN_STEP_VALUE, MAX_STEP_VALUE);
-            String[] progression = generateProgression();
+            int randomIndex = Utils.generateRandomInt(0, 9);
+            String[] progression = generateProgression(100, 2, 10);
             String correctAnswer = progression[randomIndex];
             answers[i] = correctAnswer;
             progression[randomIndex] = "..";
@@ -32,18 +27,17 @@ public class Progression {
         return questionsAnswers;
     }
 
-    public static String[] generateProgression() {
-        int step = Utils.generateRandomInt(LOWER_BOUND, UPPER_BOUND);
-        int counter = 0;
-        String[] progression = new String[10];
-        for (int i = 0; i < progression.length; i++) {
-            counter += step;
-            progression[i] = Integer.toString(counter);
-        }
-        return progression;
+    public static void run() {
+        String[][] gameData = generateGameData(5);
+        Engine.launchGame(gameData, GAME_RULES);
     }
 
-    public static String getGameRules() {
-        return GAME_RULES;
+    public static String[] generateProgression(int initValue, int step, int size) {
+        String[] progression = new String[size];
+        for (int i = 0; i < size; i++) {
+            initValue += step;
+            progression[i] = Integer.toString(initValue);
+        }
+        return progression;
     }
 }

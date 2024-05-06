@@ -1,20 +1,19 @@
 package hexlet.code.games;
 
-import hexlet.code.Config;
+import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calc {
     public static final String GAME_RULES = "What is the result of the expression?";
-    public static final int QUESTIONS_COUNT = Config.QUESTION_COUNT;
-    public static final double PLUS_CONDITION_LIMIT = Config.CALC_PLUS_CONDITION_LIMIT;
-    public static final double MINUS_CONDITION_LIMIT = Config.CALC_MINUS_CONDITION_LIMIT;
-    public static final int MIN_GENERATED_VALUE = Config.CALC_MIN_GENERATED_VALUE;
-    public static final int MAX_GENERATED_VALUE = Config.CALC_MAX_GENERATED_VALUE;
+    public static final double PLUS_CONDITION_LIMIT = .2;
+    public static final double MINUS_CONDITION_LIMIT = .3;
+    public static final int MIN_GENERATED_VALUE = 1;
+    public static final int MAX_GENERATED_VALUE = 100;
 
-    public static String[][] generateGameData() {
-        String[] questions = new String[QUESTIONS_COUNT];
-        String[] answers = new String[QUESTIONS_COUNT];
-        String[][] questionsAnswers = new String[QUESTIONS_COUNT][QUESTIONS_COUNT];
+    public static String[][] generateGameData(int questionsCount) {
+        String[] questions = new String[questionsCount];
+        String[] answers = new String[questionsCount];
+        String[][] questionsAnswers = new String[questionsCount][questionsCount];
 
 
         double conditions = Math.random();
@@ -46,7 +45,8 @@ public class Calc {
         return questionsAnswers;
     }
 
-    public static String getGameRules() {
-        return GAME_RULES;
+    public static void run() {
+        String[][] gameData = generateGameData(5);
+        Engine.launchGame(gameData, GAME_RULES);
     }
 }
