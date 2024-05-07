@@ -7,6 +7,7 @@ public class GCD {
     public static final String GAME_RULES = "Find the greatest common divisor of given numbers.";
     public static final int LOWER_BOUND = 1;
     public static final int UPPER_BOUND = 100;
+    private static final int QUESTIONS_COUNT = 3;
 
     public static String[][] generateGameData(int questionsCount) {
         String[] questions = new String[questionsCount];
@@ -31,7 +32,7 @@ public class GCD {
     }
 
     public static void run() {
-        String[][] gameData = generateGameData(3);
+        String[][] gameData = generateGameData(QUESTIONS_COUNT);
         Engine.launchGame(gameData, GAME_RULES);
     }
 }

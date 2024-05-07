@@ -7,7 +7,7 @@ public class Engine {
         Scanner scanner = new Scanner(System.in);
         String[] questions = gameData[0];
         String[] answers = gameData[1];
-        final int POINTS_TO_WIN = questions.length;
+        final int pointsToWin = questions.length;
         int playerPoints = 0;
         String playerName;
         String question;
@@ -34,7 +34,7 @@ public class Engine {
                 break;
             }
 
-            if (playerPoints == POINTS_TO_WIN) {
+            if (playerPoints == pointsToWin) {
                 playerWonFinal(playerName);
             }
         }

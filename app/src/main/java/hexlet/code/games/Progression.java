@@ -3,7 +3,13 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 public class Progression {
-    public static final String GAME_RULES = "What number is missing in the progression?";
+    private static final String GAME_RULES = "What number is missing in the progression?";
+    private static final int INIT_VALUE = 100;
+    private static final int STEP = 100;
+    private static final int SIZE = 100;
+    private static final int MIN_GENERATE_NUM = 0;
+    private static final int MAX_GENERATE_NUM = 9;
+    private static final int QUESTIONS_COUNT = 3;
 
     public static String[][] generateGameData(int questionsCount) {
         String[] questions = new String[questionsCount];
@@ -11,8 +17,8 @@ public class Progression {
         String[][] questionsAnswers = new String[questionsCount][questionsCount];
 
         for (int i = 0; i < questions.length; i++) {
-            int randomIndex = Utils.generateRandomInt(0, 9);
-            String[] progression = generateProgression(100, 2, 10);
+            int randomIndex = Utils.generateRandomInt(MIN_GENERATE_NUM, MAX_GENERATE_NUM);
+            String[] progression = generateProgression(INIT_VALUE, STEP, SIZE);
             String correctAnswer = progression[randomIndex];
             answers[i] = correctAnswer;
             progression[randomIndex] = "..";
@@ -28,7 +34,7 @@ public class Progression {
     }
 
     public static void run() {
-        String[][] gameData = generateGameData(3);
+        String[][] gameData = generateGameData(QUESTIONS_COUNT);
         Engine.launchGame(gameData, GAME_RULES);
     }
 
