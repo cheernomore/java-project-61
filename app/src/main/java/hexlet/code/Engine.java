@@ -3,38 +3,31 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
+    public static final int ROUNDS = 3;
     public static void launchGame(String[][] gameData, String gameRules) {
-        Scanner scanner = new Scanner(System.in);
-        String[] questions = gameData[0];
-        String[] answers = gameData[1];
-        final int pointsToWin = questions.length;
-        int playerPoints = 0;
-        String playerName;
-        String question;
-        String correctAnswer;
-        String userAnswer;
-
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name?");
-        playerName = scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        String playerName = scanner.nextLine();
         System.out.println("Hello, " + playerName + "!");
         System.out.println(gameRules);
 
-        for (int i = 0; i < questions.length; i++) {
-            question = questions[i];
+        String[] questions = gameData[0];
+        String[] answers = gameData[1];
+        int playerPoints = 0;
+        for (int i = 0; i < ROUNDS; i++) {
+            String question = questions[i];
             System.out.println("Question: " + question);
-            userAnswer = scanner.nextLine();
-            correctAnswer = answers[i];
+            String userAnswer = scanner.nextLine();
+            String correctAnswer = answers[i];
             System.out.println("Your answer: " + userAnswer);
-            if (isUserAnswerCorrect(userAnswer, correctAnswer)) {
-                System.out.println("Correct!");
-                playerPoints++;
-            } else {
+            if (!isUserAnswerCorrect(userAnswer, correctAnswer)) {
                 playerLostFinal(playerName, userAnswer, correctAnswer);
                 break;
             }
-
-            if (playerPoints == pointsToWin) {
+            System.out.println("Correct!");
+            playerPoints++;
+            if (playerPoints == ROUNDS) {
                 playerWonFinal(playerName);
             }
         }

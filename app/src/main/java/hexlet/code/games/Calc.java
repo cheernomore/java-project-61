@@ -3,13 +3,15 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import static hexlet.code.Engine.ROUNDS;
+
 public class Calc {
     private static final String GAME_RULES = "What is the result of the expression?";
     private static final double PLUS_CONDITION_LIMIT = .2;
     private static final double MINUS_CONDITION_LIMIT = .3;
     private static final int MIN_GENERATED_VALUE = 1;
     private static final int MAX_GENERATED_VALUE = 100;
-    private static final int QUESTIONS_COUNT = 3;
+//    private static final int QUESTIONS_COUNT = 3;
 
     public static String[][] generateGameData(int questionsCount) {
         String[] questions = new String[questionsCount];
@@ -25,18 +27,18 @@ public class Calc {
             if (conditions < PLUS_CONDITION_LIMIT) {
                 first = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
                 second = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
-                questions[i] = first + " + " + second;
-                answers[i] = Integer.toString(first + second);
+                questions[i] = first + " - " + second;
+                answers[i] = calculate(first, second, "+");
             } else if (conditions > PLUS_CONDITION_LIMIT && conditions < MINUS_CONDITION_LIMIT) {
                 first = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
                 second = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
                 questions[i] = first + " - " + second;
-                answers[i] = Integer.toString(first - second);
+                answers[i] = calculate(first, second, "-");
             } else {
                 first = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
                 second = Utils.generateRandomInt(MIN_GENERATED_VALUE, MAX_GENERATED_VALUE);
                 questions[i] = first + " * " + second;
-                answers[i] = Integer.toString(first * second);
+                answers[i] = calculate(first, second, "*");
             }
         }
 
@@ -47,7 +49,16 @@ public class Calc {
     }
 
     public static void run() {
-    String[][] gameData = generateGameData(QUESTIONS_COUNT);
+        String[][] gameData = generateGameData(ROUNDS);
         Engine.launchGame(gameData, GAME_RULES);
+    }
+
+    public static String calculate(int num1, int num2, String operator) {
+        return switch (operator) {
+            case "+" -> String.valueOf(num1 + num2);
+            case "-" -> String.valueOf(num1 - num2);
+            case "*" -> String.valueOf(num1 * num2);
+            default -> null;
+        };
     }
 }
